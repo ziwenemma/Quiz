@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Quiz</string>
+
+    <string name="subject_prompt">Choose a preference subject</string>
+
+    <string-array name="subject_arrays">
+        <item>Cisco 4</item>
+        <item>ITE</item>
+        <item>Implementation of App</item>
+    </string-array>
+
+
+</resources>
