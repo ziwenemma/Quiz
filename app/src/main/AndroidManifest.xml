@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AboutPage"></activity>
-        <activity android:name=".EditProfile" />
         <activity android:name=".ProfilePage" />
         <activity android:name=".RegisterPage" />
         <activity android:name=".MainPage" />

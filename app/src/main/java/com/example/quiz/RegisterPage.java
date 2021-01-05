@@ -45,6 +45,8 @@ public class RegisterPage extends AppCompatActivity {
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
         signupButton = (Button) findViewById(R.id.signupButton);
+        mPhone = findViewById(R.id.phoneNumber);
+
         loginButton = (Button) findViewById(R.id.loginButton);
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -61,6 +63,7 @@ public class RegisterPage extends AppCompatActivity {
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 final String fullName = username.getText().toString();
+                final String phone = mPhone.getText().toString();
 
 
                 if (TextUtils.isEmpty(email)) {
@@ -100,10 +103,12 @@ public class RegisterPage extends AppCompatActivity {
                             });
 
                             userID = fAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("users").document(fullName);
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
                             Map<String, Object> user = new HashMap<>();
                             user.put("fName", fullName);
                             user.put("email", email);
+                            user.put("phone", phone);
+
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
 
                                 @Override

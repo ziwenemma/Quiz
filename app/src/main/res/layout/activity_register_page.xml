@@ -75,6 +75,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"/>
 
+            <EditText
+                android:background="#C0C0C0"
+                android:hint="Phone Number"
+                android:id="@+id/phoneNumber"
+                android:layout_marginTop="15dp"
+                android:layout_width="300dp"
+                android:inputType="phone"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
 
             <Button
                 android:id="@+id/signupButton"
