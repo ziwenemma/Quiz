@@ -27,9 +27,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private int quesNum;
     private CountDownTimer countDown;
     private int score;
-    private FirebaseFirestore firestore;
-    private int setNo;
-    private Dialog loadingDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +48,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
         getQuestionsList();
+        score=0;
 
     }
 
@@ -144,7 +143,8 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
 
             ((Button) view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN)); //to change the background color of the selected option
-            score++;
+            score++;  //when the user marks the right answer the score  increments
+
 
         } else {
             //if the user chooses the wrong answer then the selected options color changes to red
@@ -200,7 +200,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         } else {
             // Go to Score Activity
             Intent intent = new Intent(QuestionActivity.this, ScoreActivity.class);
-            intent.putExtra("SCORE", String.valueOf(score) + "/" + String.valueOf(questionList.size()));
+            intent.putExtra("SCORE", String.valueOf(score) + "/" + String.valueOf(questionList.size())); //  divide the score by the total number of questions in the list
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             //QuestionActivity.this.finish();
