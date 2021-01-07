@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+   <item
+       android:title="Categories"
+    android:id="@+id/action_category"
+     android:enabled="true"
+    app:showAsAction="ifRoom"
+    android:icon="@drawable/ic_baseline_question_answer_24"
+    />
+
+
+    <item
+        android:title="Ranking"
+        android:id="@+id/action_ranking"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_baseline_star_24"/>
+
+</menu>
