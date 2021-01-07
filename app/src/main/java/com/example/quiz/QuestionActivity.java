@@ -201,7 +201,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             // Go to Score Activity
             Intent intent = new Intent(QuestionActivity.this, ScoreActivity.class);
             intent.putExtra("SCORE", String.valueOf(score) + "/" + String.valueOf(questionList.size())); //  divide the score by the total number of questions in the list
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  //clears all the options activities so that user cannot go back to the questions after seeing their score
             startActivity(intent);
             //QuestionActivity.this.finish();
         }
@@ -268,6 +268,12 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
 
             }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        countDown.cancel();  //cancel's the countdown of the timer when we press the go back button on the navigation
+    }
 }
 
 
