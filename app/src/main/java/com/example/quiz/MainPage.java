@@ -1,10 +1,5 @@
 package com.example.quiz;
 
-import androidx.annotation.NonNull;
-import  androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +8,12 @@ import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
+import static com.example.quiz.SplashActivity.catList;
 
 public class MainPage extends AppCompatActivity {
 
@@ -55,13 +52,6 @@ public class MainPage extends AppCompatActivity {
 
         catGrid = findViewById(R.id.catCardView);
 
-        List<String> catList = new ArrayList<>();
-        catList.add("Cat 1");
-        catList.add("Cat 2");
-        catList.add("Cat 3");
-        catList.add("Cat 4");
-        catList.add("Cat 5");
-        catList.add("Cat 6");
 
         CatGridAdapter adapter =new CatGridAdapter(catList);
         catGrid.setAdapter(adapter);
