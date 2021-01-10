@@ -88,5 +88,5 @@ public class MainPage extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
 }

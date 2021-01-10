@@ -84,11 +84,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void startTimer() {
-       countDown = new CountDownTimer(12000, 1000) {
+        countDown = new CountDownTimer(12000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 if(millisUntilFinished < 10000)
-                timer.setText(String.valueOf(millisUntilFinished / 1000));
+                    timer.setText(String.valueOf(millisUntilFinished / 1000));
             }
 
             @Override
@@ -209,65 +209,65 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-            private void playAnim(View view, final int value, final int viewNum){
+    private void playAnim(View view, final int value, final int viewNum){
 
-                view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
-                        .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
-                        .setListener(new Animator.AnimatorListener() {
-                            @Override
-                            public void onAnimationStart(Animator animation) {
+        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
+                .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
+                .setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
 
-                            }
+                    }
 
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                if(value == 0)
-                                {
-                                    switch (viewNum)
-                                    {
-                                        case 0:
-                                            ((TextView)view).setText(questionList.get(quesNum).getQuestion());
-                                            break;
-                                        case 1:
-                                            ((Button)view).setText(questionList.get(quesNum).getOptionA());
-                                            break;
-                                        case 2:
-                                            ((Button)view).setText(questionList.get(quesNum).getOptionB());
-                                            break;
-                                        case 3:
-                                            ((Button)view).setText(questionList.get(quesNum).getOptionC());
-                                            break;
-                                        case 4:
-                                            ((Button)view).setText(questionList.get(quesNum).getOptionD());
-                                            break;
-
-                                    }
-
-
-                                    if(viewNum != 0)
-                                        ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E99C03")));//to reset the background of the options orange color back
-
-
-                                    playAnim(view,1,viewNum);  // call the animation and changing its values to one so that the options button can re-appear
-
-                                }
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        if(value == 0)
+                        {
+                            switch (viewNum)
+                            {
+                                case 0:
+                                    ((TextView)view).setText(questionList.get(quesNum).getQuestion());
+                                    break;
+                                case 1:
+                                    ((Button)view).setText(questionList.get(quesNum).getOptionA());
+                                    break;
+                                case 2:
+                                    ((Button)view).setText(questionList.get(quesNum).getOptionB());
+                                    break;
+                                case 3:
+                                    ((Button)view).setText(questionList.get(quesNum).getOptionC());
+                                    break;
+                                case 4:
+                                    ((Button)view).setText(questionList.get(quesNum).getOptionD());
+                                    break;
 
                             }
 
-                            @Override
-                            public void onAnimationCancel(Animator animation) {
 
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animator animation) {
-
-                            }
-                        });
+                            if(viewNum != 0)
+                                ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#E99C03")));//to reset the background of the options orange color back
 
 
+                            playAnim(view,1,viewNum);  // call the animation and changing its values to one so that the options button can re-appear
 
-            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                });
+
+
+
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -275,12 +275,4 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         countDown.cancel();  //cancel's the countdown of the timer when we press the go back button on the navigation
     }
 }
-
-
-
-
-
-
-
-
 

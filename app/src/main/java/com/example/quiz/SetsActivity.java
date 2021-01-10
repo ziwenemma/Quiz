@@ -20,10 +20,10 @@ public class SetsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sets);
-        
+
         Toolbar toolbar = findViewById(R.id.set_toolbar);
         setSupportActionBar(toolbar);
-        
+
         String title = getIntent().getStringExtra("CATEGORY");
         getSupportActionBar().setTitle(title);
 
