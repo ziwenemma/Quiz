@@ -28,6 +28,7 @@
         android:layout_height="match_parent" >
         <LinearLayout
             android:orientation="vertical"
+            android:id="@+id/edit_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -43,7 +44,6 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"/>
             <EditText
-
                 android:background="#C0C0C0"
                 android:id="@+id/username"
                 android:hint="Username"
@@ -77,11 +77,11 @@
 
             <EditText
                 android:background="#C0C0C0"
-                android:hint="Phone Number"
-                android:id="@+id/phoneNumber"
+                android:hint="Confirm Password"
+                android:id="@+id/confirmPass"
                 android:layout_marginTop="15dp"
                 android:layout_width="300dp"
-                android:inputType="phone"
+                android:inputType="textPassword"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"/>
 

@@ -31,7 +31,6 @@ import com.squareup.picasso.Picasso;
 import javax.annotation.Nullable;
 
 
-
 public class ProfilePage extends AppCompatActivity {
     private static final int GALLERY_INTENT_CODE = 1023 ;
     TextView fullName,email,phone,verifyMsg;
@@ -60,7 +59,7 @@ public class ProfilePage extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
-        getSupportActionBar().setTitle("Profile");
+
 
         StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -84,9 +83,9 @@ public class ProfilePage extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 if(documentSnapshot.exists()){
-                    phone.setText(documentSnapshot.getString("phone"));
-                    fullName.setText(documentSnapshot.getString("fName"));
-                    email.setText(documentSnapshot.getString("email"));
+                    phone.setText(documentSnapshot.getString("password"));
+                    fullName.setText(documentSnapshot.getString("NAME"));
+                    email.setText(documentSnapshot.getString("EMAIL_ID"));
 
                 }else {
                     Log.d("tag", "onEvent: Document do not exists");
@@ -116,13 +115,13 @@ public class ProfilePage extends AppCompatActivity {
 
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(ProfilePage.this, "Password Reset Successfully.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(com.example.quiz.ProfilePage.this, "Password Reset Successfully.", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
 
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(ProfilePage.this, "Password Reset Failed.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(com.example.quiz.ProfilePage.this, "Password Reset Failed.", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

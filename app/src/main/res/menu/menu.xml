@@ -9,9 +9,6 @@
         android:title="go to profile page"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/quizHistory"
-        android:title="Quiz history"/>
-    <item
         android:id="@+id/contactpage"
         android:title="Contact us"/>
 

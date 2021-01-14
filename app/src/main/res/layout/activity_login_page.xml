@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginPage">
+    tools:context=".LoginPage"
+    android:theme="@style/LoginTheme">
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="First to Log In OurQuiz"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,6 +36,8 @@
         android:layout_marginTop="33dp"
         android:background="#DCDCDC"
         android:hint="Email"
+        android:drawableTint="#66B2FF"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
         android:inputType="textEmailAddress"/>
 
     <EditText
@@ -37,6 +48,8 @@
         android:layout_marginTop="18dp"
         android:background="#DCDCDC"
         android:hint="Password"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawableTint="#66B2FF"
         android:inputType="textPassword" />
 
 
@@ -66,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="60dp"
         android:background="#B266FF">
         <TextView
             android:layout_width="match_parent"

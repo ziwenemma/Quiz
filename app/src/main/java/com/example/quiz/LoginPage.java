@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,14 +24,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-
 public class LoginPage extends AppCompatActivity {
     EditText mEmail, mPassword;
     Button loginButton;
     Button signupButton;
     FirebaseAuth fAuth;
     TextView forgotTextLink;
-
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +45,12 @@ public class LoginPage extends AppCompatActivity {
         forgotTextLink=findViewById(R.id.forgotPassword);
 
 
+
         loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
 
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
@@ -71,10 +74,28 @@ public class LoginPage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LoginPage.this, "Login in successfully", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), MainPage.class));
+                            Toast.makeText(com.example.quiz.LoginPage.this, "Login in successfully", Toast.LENGTH_LONG).show();
+
+
+                            DbQuery.loadCategories(new MyCompleteListener() {
+                                @Override
+                                public void onSuccess() {
+                                    Intent intent = new Intent(LoginPage.this,MainPage.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onFailure() {
+                                    Toast.makeText(com.example.quiz.LoginPage.this, "Error!" ,Toast.LENGTH_LONG).show();
+
+                                }
+                            });
+
+
+
                         } else {
-                            Toast.makeText(LoginPage.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(com.example.quiz.LoginPage.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
                         }
                     }
@@ -112,13 +133,13 @@ public class LoginPage extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                Toast.makeText(LoginPage.this,"Reset Link Sent To Your Email", Toast.LENGTH_LONG).show();
+                                Toast.makeText(com.example.quiz.LoginPage.this,"Reset Link Sent To Your Email", Toast.LENGTH_LONG).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
 
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginPage.this,"Error ! Reset Link is Not Sent"+e.getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(com.example.quiz.LoginPage.this,"Error ! Reset Link is Not Sent"+e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
                     }

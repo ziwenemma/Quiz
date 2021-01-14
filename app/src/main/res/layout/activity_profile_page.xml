@@ -19,6 +19,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal"/>
 
     <ImageView
@@ -87,6 +90,9 @@
         android:layout_marginEnd="8dp"
         android:background="#A569BD"
         android:text="Change Password"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"

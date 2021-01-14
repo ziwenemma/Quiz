@@ -54,5 +54,11 @@ dependencies {
     implementation 'com.github.andremion:counterfab:1.0.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
+    def nav_version = "2.3.0-alpha01"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
 }
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+apply plugin: 'androidx.navigation.safeargs'

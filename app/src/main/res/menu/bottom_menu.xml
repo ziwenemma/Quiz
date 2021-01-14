@@ -3,9 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+
+    <item
+        android:title="About us"
+        android:id="@+id/nav_about"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/abouticon"/>
+
+
    <item
-       android:title="Categories"
-    android:id="@+id/action_category"
+       android:title="All Categories"
+    android:id="@+id/nav_home"
      android:enabled="true"
     app:showAsAction="ifRoom"
     android:icon="@drawable/ic_baseline_question_answer_24"
@@ -13,10 +23,9 @@
 
 
     <item
-        android:title="Ranking"
-        android:id="@+id/action_ranking"
+        android:title="Start Test"
+        android:id="@+id/nav_account"
         android:enabled="true"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_baseline_star_24"/>
-
 </menu>
