@@ -1,5 +1,6 @@
 package com.example.quiz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
@@ -11,14 +12,23 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.quiz.SetsActivity.category_id;
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView question, qCount, timer;
@@ -27,6 +37,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private int quesNum;
     private CountDownTimer countDown;
     private int score;
+    private FirebaseFirestore firestore;
+    private int setNo;
+    private Dialog loadingDialog;
+
 
 
     @Override
@@ -47,6 +61,17 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         option2.setOnClickListener(this);
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
+
+        loadingDialog= new Dialog(QuestionActivity.this);
+        loadingDialog.setContentView(R.layout.loading_progressbar);
+        loadingDialog.setCancelable(false);
+        loadingDialog.getWindow().setBackgroundDrawableResource(R.drawable.progress_background);
+        loadingDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        loadingDialog.show();
+
+
+        setNo = getIntent().getIntExtra("SETNO",1); //to get the set number from firebase using intent
+        firestore = FirebaseFirestore.getInstance();  // to initialize  firebase connection
         getQuestionsList();
         score=0;
 
@@ -56,12 +81,39 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
         questionList = new ArrayList<>();
 
-        questionList.add(new Question("What does SDK stands for?", "Software Development Kit", "System Development Kit", "Structure Development Kit", "Simple Development Kit", 1));
-        questionList.add(new Question("What does API stands for?", "Application Programming Interface", "Application Progress Interface", "Application Planning  Interface", "Apple Programming Infrastructure", 1));
-        questionList.add(new Question("What does postmanTool used for?", "To Deliver Mail", "To Test API", "To Make Pictures", "To Do online Chat", 2));
-        questionList.add(new Question("If a method does not return any value, what type would it take?", "Integer", "String", "void", "Intents", 3));
-        questionList.add(new Question("What Android feature allows the user to play back music, take pictures with the camera, or use the microphone for audio note-taking?", "Storage", "Network", "Multimedia", "GPS", 3));
-        setQuestion();
+        firestore.collection("QUIZ").document("CAT" + String.valueOf(category_id))
+                .collection("SET" + String.valueOf(setNo))
+                .get().addOnCompleteListener(new  OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    QuerySnapshot questions = task.getResult();
+
+                    for(QueryDocumentSnapshot doc : questions){   // we area Running a for loop to load questions from firebase collection
+                        questionList.add(new Question(doc.getString("QUESTION"),
+                                doc.getString("A"),
+                                doc.getString("B"),
+                                doc.getString("C"),
+                                doc.getString("D"),
+                                Integer.valueOf(doc.getString("ANSWER"))
+                                ));
+                    }setQuestion();
+
+                } else {
+
+                    Toast.makeText(QuestionActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                loadingDialog.cancel();  // if the values form the database are successfully loaded then this will cancel the progressbar
+            }
+
+
+
+        });
+
+
+
+
+
     }
 
 
@@ -189,7 +241,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             playAnim(option1, 0, 1);
             playAnim(option2, 0, 2);
             playAnim(option3, 0, 3);
-            playAnim(option4, 0, 4);
+            playAnim(option4, 0, 4); 
 
             // to show on which question we are out of total questions
             qCount.setText(String.valueOf(quesNum + 1) + "/" + String.valueOf(questionList.size()));

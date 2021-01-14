@@ -24,9 +24,9 @@ import static com.example.quiz.SplashActivity.catList;
 public class SetsActivity extends AppCompatActivity {
 
     private GridView sets_grid;
-    private FirebaseFirestore firestore;
-    private int category_id;
-    private Dialog loadingDialog;
+    private FirebaseFirestore firestore;  // t0o connect this activity to fire store
+    public static int category_id;   //to get the  values for the category id from firebase  // to access it in questions activity make the variable public
+    private Dialog loadingDialog;   ///to show the progressbar
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +36,17 @@ public class SetsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         String title = getIntent().getStringExtra("CATEGORY");
-        category_id = getIntent().getIntExtra("CATEGORY_ID",1);
+       category_id = getIntent().getIntExtra("CATEGORY_ID",1);
 
         getSupportActionBar().setTitle(title);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sets_grid = findViewById(R.id.sets_gridview);
+        firestore = FirebaseFirestore.getInstance();
+        loadSets();
 
+        //to load the progressbar and get its background
         loadingDialog = new Dialog(SetsActivity.this);
         loadingDialog.setContentView(R.layout.loading_progressbar);
         loadingDialog.setCancelable(false);
@@ -51,15 +54,17 @@ public class SetsActivity extends AppCompatActivity {
         loadingDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         loadingDialog.show();
 
-        firestore = FirebaseFirestore.getInstance();
 
-        loadSets();
+
+
 
 
 
     }
 
-    public void loadSets(){
+    public void loadSets()
+    {
+
         firestore.collection("QUIZ").document("CAT" + String.valueOf(category_id))
                 .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -68,24 +73,23 @@ public class SetsActivity extends AppCompatActivity {
                     DocumentSnapshot doc = task.getResult();
 
                     if (doc.exists()) {
-                        long sets = (long) doc.get("SETS");
+                        long sets = (long) doc.get("SETS");   //getting the data from firebase
 
 
-                        SetsAdapter adapter = new SetsAdapter((int) sets);
-
+                        SetsAdapter adapter = new SetsAdapter((int) sets);   //setting the adaptor
                         sets_grid.setAdapter(adapter);
 
 
                     } else {
-                        Toast.makeText(com.example.quiz.SetsActivity.this, "No Category Document Exists!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetsActivity.this, "No Category Document Exists!", Toast.LENGTH_SHORT).show();
                         finish();
                     }
 
                 } else {
 
-                    Toast.makeText(com.example.quiz.SetsActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SetsActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                loadingDialog.cancel();
+                loadingDialog.cancel();  // if the values form the database are successfully loaded then this will cancel the progressbar
             }
 
             });

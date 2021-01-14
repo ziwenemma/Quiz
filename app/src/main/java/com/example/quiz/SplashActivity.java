@@ -33,8 +33,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         appName = findViewById(R.id.appName);
-        Typeface typeface = ResourcesCompat.getFont(this,R.font.blacklist);
-        appName.setTypeface(typeface);
+       Typeface typeface = ResourcesCompat.getFont(this,R.font.blacklist);
+       appName.setTypeface(typeface);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.myanim);
         appName.setAnimation(anim);
