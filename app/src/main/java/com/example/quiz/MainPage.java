@@ -1,12 +1,9 @@
 package com.example.quiz;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,7 +12,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.ListFragment;
 
@@ -43,6 +39,8 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
                         case R.id.nav_about:
                             setFragment(new AboutFragment());
                             break;
+
+
                     }
                     return false;
                 }
@@ -140,8 +138,8 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
             Intent myintent = new Intent(MainPage.this, ProfilePage.class);
             startActivity(myintent);
         }
-        else if (id == R.id.aboutPage) {
-            Intent myintent = new Intent(MainPage.this, AboutPage.class);
+        else if (id == R.id.contactus) {
+            Intent myintent = new Intent(MainPage.this, Contactus.class);
             startActivity(myintent);
         }
         return super.onOptionsItemSelected(item);

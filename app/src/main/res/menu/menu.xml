@@ -9,11 +9,9 @@
         android:title="go to profile page"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/contactpage"
+        android:id="@+id/nav_contactus"
         android:title="Contact us"/>
 
-    <item
-        android:id="@+id/aboutPage"
-        android:title="About us"/>
+
 
 </menu>

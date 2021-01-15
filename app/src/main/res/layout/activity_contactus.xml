@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    tools:context=".Contactus">
+
+    <ImageView
+        android:id="@+id/contactus"
+        android:layout_width="341dp"
+        android:layout_height="185dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/contactus" />
+
+
+    <EditText
+        android:id="@+id/email_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please write the Subject Here"
+        android:padding="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:enabled="false"
+        android:hint="contactquiz@gmail.com"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/email_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:hint="Please type your Message  Here"
+        android:maxLength="6"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/email_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send" />
+
+
+</LinearLayout>
