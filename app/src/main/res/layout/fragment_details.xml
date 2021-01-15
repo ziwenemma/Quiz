@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/details_image"
         android:layout_width="0dp"
-        android:layout_height="192dp"
+        android:layout_height="180dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:fontFamily="@font/crimson_text"
         android:text="Quiz Title"
         android:textColor="#FFCCE5"
-        android:textSize="26sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_image" />
 
@@ -42,7 +42,7 @@
         android:fontFamily="@font/work_sans"
         android:text="Quiz Description"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_title"
@@ -57,7 +57,7 @@
         android:fontFamily="@font/work_sans"
         android:text="Difficulty"
         android:textColor="@color/colorLightText"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_desc" />
 
@@ -69,7 +69,7 @@
         android:layout_marginTop="16dp"
         android:text="Total Questions"
         android:textColor="@color/colorLightText"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:fontFamily="@font/work_sans"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_difficulty" />
@@ -82,7 +82,7 @@
         android:layout_marginTop="16dp"
         android:text="Your Last Score"
         android:textColor="@color/colorLightText"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:fontFamily="@font/work_sans"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_questions" />
@@ -94,7 +94,7 @@
         android:layout_marginEnd="32dp"
         android:text="NA"
         android:textColor="@color/colorLightText"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:fontFamily="@font/work_sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/details_difficulty" />
@@ -107,7 +107,7 @@
         android:layout_marginEnd="32dp"
         android:text="NA"
         android:textColor="@color/colorLightText"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:fontFamily="@font/work_sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_difficulty_text" />
@@ -120,7 +120,7 @@
         android:layout_marginEnd="32dp"
         android:text="NA"
         android:textColor="@color/colorLightText"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:fontFamily="@font/work_sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/details_questions_text" />

@@ -98,7 +98,6 @@ public class ResultFragment extends Fragment {
                     resultWrong.setText(wrong.toString());
                     resultMissed.setText(missed.toString());
 
-                    //Calculate Progress
                     Long total = correct + wrong + missed;
                     Long percent = (correct*100)/total;
 

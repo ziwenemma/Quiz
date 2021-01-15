@@ -30,17 +30,15 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                     switch (item.getItemId()) {
+                        case R.id.nav_about:
+                        setFragment(new AboutFragment());
+                        return true;
                         case R.id.nav_home:
                             setFragment(new CategoryFragment());
                         return true;
                         case R.id.nav_account:
                             setFragment(new ListFragment());
                             return true;
-                        case R.id.nav_about:
-                            setFragment(new AboutFragment());
-                            break;
-
-
                     }
                     return false;
                 }
@@ -101,7 +99,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
                 setFragment(new AboutFragment());
                 return true;
     }else if(id==R.id.nav_share) {
-            setFragment(new CategoryFragment());
+            setFragment(new ContactFragment());
             return true;
         }
         DrawerLayout drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
@@ -139,8 +137,8 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(myintent);
         }
         else if (id == R.id.contactus) {
-            Intent myintent = new Intent(MainPage.this, Contactus.class);
-            startActivity(myintent);
+            Intent myintent2 = new Intent(MainPage.this, Contactus.class);
+            startActivity(myintent2);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -49,15 +49,13 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
     private long totalQuestions = 0;
     private String quizName;
 
-    public DetailsFragment() {
-        // Required empty public constructor
-    }
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_details, container, false);
     }
 
@@ -68,7 +66,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
         navController = Navigation.findNavController(view);
         position = DetailsFragmentArgs.fromBundle(getArguments()).getPosition();
 
-        //Initialize UI Elements
+
         detailsImage = view.findViewById(R.id.details_image);
         detailsTitle = view.findViewById(R.id.details_title);
         detailsDesc = view.findViewById(R.id.details_desc);
@@ -79,7 +77,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
         detailsStartBtn = view.findViewById(R.id.details_start_btn);
         detailsStartBtn.setOnClickListener(this);
 
-        //Load Previous Results
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
     }
@@ -108,7 +106,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
                 quizName = quizListModels.get(position).getName();
                 totalQuestions  = quizListModels.get(position).getQuestions();
 
-                //Load Results Data
+
                 loadResultsData();
 
             }
@@ -125,18 +123,18 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     if(document != null && document.exists()){
-                        //Get Result
+
                         Long correct = document.getLong("correct");
                         Long wrong = document.getLong("wrong");
                         Long missed = document.getLong("unanswered");
 
-                        //Calculate Progress
+
                         Long total = correct + wrong + missed;
                         Long percent = (correct*100)/total;
 
                         detailsScore.setText(percent + "%");
                     } else {
-                        //Document Doesn't Exist, and result should stay N/A
+
                     }
                 }
             }
@@ -154,5 +152,9 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
                 navController.navigate(action);
                 break;
         }
+    }
+
+    public DetailsFragment() {
+
     }
 }

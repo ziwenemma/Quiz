@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_list"
             android:icon="@drawable/apps"
-            android:title="Account"
+            android:title="Start Quiz"
             />
 
         <item

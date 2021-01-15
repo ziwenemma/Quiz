@@ -39,13 +39,13 @@ public class ListFragment extends Fragment implements com.example.quiz.QuizListA
     private Animation fadeOutAnim;
 
     public ListFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
@@ -54,18 +54,11 @@ public class ListFragment extends Fragment implements com.example.quiz.QuizListA
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
-
-
         listView = view.findViewById(R.id.list_view);
-
         adapter = new com.example.quiz.QuizListAdapter(this);
-
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
         listView.setHasFixedSize(true);
         listView.setAdapter(adapter);
-
-
-
         fadeInAnim = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
         fadeOutAnim = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
     }
@@ -73,14 +66,11 @@ public class ListFragment extends Fragment implements com.example.quiz.QuizListA
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         quizListViewModel = new ViewModelProvider(getActivity()).get(com.example.quiz.QuizListViewModel.class);
         quizListViewModel.getQuizListModelData().observe(getViewLifecycleOwner(), new Observer<List<com.example.quiz.QuizListModel>>() {
             @Override
             public void onChanged(List<com.example.quiz.QuizListModel> quizListModels) {
-                //Load RecyclerView
                 listView.startAnimation(fadeInAnim);
-
                 adapter.setQuizListModels(quizListModels);
                 adapter.notifyDataSetChanged();
             }
