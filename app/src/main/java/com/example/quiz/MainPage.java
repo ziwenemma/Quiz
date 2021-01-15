@@ -136,7 +136,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
             Intent myintent = new Intent(MainPage.this, ProfilePage.class);
             startActivity(myintent);
         }
-        else if (id == R.id.contactus) {
+        else if (id == R.id.nav_contactus) {
             Intent myintent2 = new Intent(MainPage.this, Contactus.class);
             startActivity(myintent2);
         }
